@@ -9,6 +9,10 @@ bool isTrue(int arr[], int n, int k, int final)
 		if(page+arr[i]>final)
 		{
 			std++;
+			if(std>k||arr[i]>final)
+			{
+				return false;
+			}
 			page=arr[i];
 		}
 		else{
@@ -16,7 +20,7 @@ bool isTrue(int arr[], int n, int k, int final)
 		}
 	
 	}
-		return (final<=k);
+		return true;
 }
 
 int pages(int arr[], int n, int k)
@@ -32,7 +36,7 @@ int pages(int arr[], int n, int k)
 	while(low<=high)
 	{
 	int mid=low+(high-low)/2;
-		if(isTrue(arr, n, k, mid))
+		if(isTrue(arr, n, k,mid))
 		{
 			ans=mid;
 			high=mid-1;
